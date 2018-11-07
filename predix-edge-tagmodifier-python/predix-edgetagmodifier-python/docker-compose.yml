@@ -1,0 +1,18 @@
+version: "3.0"
+
+services:  
+  tagname-edge-app:
+    image: "tagname-edge-app:1.0.0"
+    environment:
+      - PYTHONUNBUFFERED=0 # To shows print statements in docker logs
+      - BROKER=predix-edge-broker
+      - TOPIC=timeseries_data
+      - PREFIX=my_prefix
+    networks:
+      - predix-edge-broker_net
+
+  
+networks:
+  predix-edge-broker_net:
+    external: true
+
